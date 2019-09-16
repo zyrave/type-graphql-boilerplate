@@ -1,0 +1,26 @@
+# Base image
+FROM node:10-alpine
+
+# Install tools required for project
+RUN apk update
+RUN apk add --no-cache bash
+
+# Create app directory and use it as the working directory
+RUN mkdir -p /usr/src/app/server_dev
+WORKDIR /usr/src/app/server_dev
+
+# Copy all necessary files to the working directory
+COPY package*.json .
+COPY yarn.lock .
+
+# Install and cache app dependencies
+RUN yarn
+
+# Copy all files to the working directory
+COPY . .
+
+# Expose ports
+EXPOSE 4000
+
+# Start app
+CMD ["yarn", "dev"]
