@@ -5,12 +5,12 @@ import http from 'http';
 import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
 import session from 'express-session';
 import cors from 'cors';
 import connectRedis from 'connect-redis';
 
+import { createSchema } from './utils/createSchema';
 import { redis } from './redis';
 
 const startServer = async () => {
@@ -27,10 +27,7 @@ const startServer = async () => {
 
   await createConnection();
 
-  const schema = await buildSchema({
-    resolvers: [__dirname + '/modules/**/*.ts'],
-    authChecker: ({ context: { req } }) => !!req.session.userId,
-  });
+  const schema = await createSchema();
 
   const apolloServer = new ApolloServer({
     schema,
