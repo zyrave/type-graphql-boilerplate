@@ -30,15 +30,6 @@
     "isolatedModules": true,
     "skipLibCheck": false
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./ormconfig.ts"]
+  "exclude": ["node_modules", "dist", "data"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

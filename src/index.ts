@@ -22,7 +22,20 @@ const startServer = async () => {
     development: { ssl: false, port: 4000, hostname: 'localhost' },
   };
 
-  const environment = process.env.NODE_ENV || 'development';
+  let environment = 'development';
+  const sslPath = `./ssl/${process.env.NODE_ENV}`;
+
+  if (process.env.NODE_ENV === 'production') {
+    if (
+      fs.existsSync(`${sslPath}/server.key`) &&
+      fs.existsSync(`${sslPath}/server.crt`)
+    ) {
+      environment = process.env.NODE_ENV;
+    } else {
+      environment = 'development';
+    }
+  }
+
   const config = configurations[environment];
 
   await createConnection();
@@ -71,8 +84,8 @@ const startServer = async () => {
     // Make sure the files are secured.
     server = https.createServer(
       {
-        key: fs.readFileSync(`./ssl/${environment}/server.key`),
-        cert: fs.readFileSync(`./ssl/${environment}/server.crt`),
+        key: fs.readFileSync(`${sslPath}/server.key`),
+        cert: fs.readFileSync(`${sslPath}/server.crt`),
       },
       app,
     );

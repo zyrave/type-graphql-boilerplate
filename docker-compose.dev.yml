@@ -6,16 +6,16 @@ services:
     ports:
       - '5432:5432'
     env_file:
-      - .env
+      - .env.dev
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ${POSTGRES_DB_PATH}:/var/lib/postgresql/data
   redis:
     image: redis
     restart: always
     ports:
       - '6379:6379'
     volumes:
-      - ./data/redis:/data
+      - ${REDIS_DB_PATH}:/data
   server:
     build:
       context: .

@@ -22,5 +22,8 @@ COPY . .
 # Expose ports
 EXPOSE 4000
 
+# Set Environment
+ENV NODE_ENV='development'
+
 # Start app
 CMD ["yarn", "dev"]

@@ -2,12 +2,12 @@
 
 In the project directory, you can run:
 
-**Production**
+`yarn start` or `yarn dev` or `yarn test`
 
-`yarn docker:start`
+**Using Docker**
 
-or
+- Make sure to set **_USE_DOCKER_** environment to **true** in **.env** file
+- Set **_POSTGRES_DB_PATH_** and **_REDIS_DB_PATH_** for data persistent
+- Run docker
 
-**Local Development**
-
-`yarn docker:dev`
+`yarn docker:start` or `yarn docker:dev`

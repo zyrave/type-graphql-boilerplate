@@ -13,6 +13,8 @@ WORKDIR /usr/src/app/server
 COPY package*.json .
 COPY yarn.lock .
 COPY wait-for-it.sh .
+COPY .env .
+COPY ormconfig.js .
 
 # Install and cache app dependencies
 RUN yarn
@@ -23,5 +25,8 @@ COPY dist .
 # Expose ports
 EXPOSE 4000
 
+# Set Environment
+ENV NODE_ENV='production'
+
 # Start app
-CMD ["yarn", "start"]
+CMD ["node", "index.js"]
