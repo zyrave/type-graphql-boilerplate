@@ -1,8 +1,8 @@
 import { Connection } from 'typeorm';
 import faker from 'faker';
 
-import { testConn } from '../../test-utils/testConn';
-import { gCall } from '../../test-utils/gCall';
+import { testConn } from '../../utils/test/testConn';
+import { gCall } from '../../utils/test/gCall';
 import { redis } from '../../redis';
 import { User } from '../../entity/User';
 
