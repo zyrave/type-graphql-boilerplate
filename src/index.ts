@@ -8,6 +8,7 @@ import express from 'express';
 import { createConnection } from 'typeorm';
 import session from 'express-session';
 import cors from 'cors';
+import compression from 'compression';
 import connectRedis from 'connect-redis';
 
 import { createSchema } from './utils/createSchema';
@@ -58,6 +59,8 @@ const startServer = async () => {
     }),
   );
 
+  app.use(compression());
+
   app.use(
     session({
       store: new RedisStore({
@@ -79,6 +82,7 @@ const startServer = async () => {
 
   // Create the HTTPS or HTTP server, per configuration
   let server;
+
   if (config.ssl) {
     // Assumes certificates are in .ssl folder from package root.
     // Make sure the files are secured.
