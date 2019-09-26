@@ -14,9 +14,9 @@ import connectRedis from 'connect-redis';
 import { createSchema } from './utils/createSchema';
 import { redis } from './redis';
 
-const startServer = async () => {
-  dotenv.config();
+dotenv.config();
 
+const startServer = async () => {
   const configurations = {
     // Note: You may need sudo to run on port 443
     production: { ssl: true, port: 443, hostname: '' },
