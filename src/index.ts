@@ -14,6 +14,16 @@ import connectRedis from 'connect-redis';
 import { createSchema } from './utils/createSchema';
 import { redis } from './redis';
 
+process.on('uncaughtException', error => {
+  console.log(error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', error => {
+  console.log(error);
+  process.exit(1);
+});
+
 dotenv.config();
 
 const startServer = async () => {
