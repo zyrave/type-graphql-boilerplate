@@ -15,7 +15,7 @@
     "docker:stop": "docker-compose down",
     "clean": "rm -rf dist node_modules",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "dbtest:setup": "ts-node-dev src/test-utils/setup.ts",
+    "dbtest:setup": "ts-node-dev src/utils/test/setup.ts",
     "test": "yarn dbtest:setup && jest"
   },
   "dependencies": {
