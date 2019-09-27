@@ -17,7 +17,7 @@ export class User extends BaseEntity {
   lastName!: string;
 
   @Field()
-  @Column('text', { unique: true })
+  @Column({ unique: true })
   email!: string;
 
   @Field()
@@ -28,6 +28,6 @@ export class User extends BaseEntity {
   @Column()
   password!: string;
 
-  @Column('bool', { default: false })
+  @Column({ default: false })
   confirmed!: boolean;
 }
