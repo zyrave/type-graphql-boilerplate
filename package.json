@@ -2,7 +2,8 @@
   "name": "type-graphql-boilerplate",
   "version": "1.0.0",
   "description": "TypeGraphQL Boilerplate",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "",
   "license": "MIT",
   "private": true,
@@ -35,7 +36,9 @@
     "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^0.17.5",
+    "typedi": "^0.8.0",
     "typeorm": "^0.2.19",
+    "typeorm-typedi-extensions": "^0.2.3",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

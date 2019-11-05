@@ -1,16 +1,16 @@
 import { Resolver, Query, Mutation, Arg, UseMiddleware } from 'type-graphql';
 import bcrypt from 'bcryptjs';
 
-import { User } from './../../entity/User';
+import { User } from '../../entities/User';
 import { RegisterInput } from './register/RegisterInput';
-import { isAuth } from '../middleware/isAuth';
+import { isAuthenticated } from '../middleware/isAuthenticated';
 import { sendEmail } from './../utils/sendEmail';
 import { createConfirmationUrl } from '../utils/createConfirmationUrl';
 
 @Resolver()
 export class RegisterResolver {
   @Query(() => String)
-  @UseMiddleware(isAuth)
+  @UseMiddleware(isAuthenticated)
   async hello() {
     return 'Hello World!';
   }

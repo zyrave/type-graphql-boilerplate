@@ -4,7 +4,7 @@ import faker from 'faker';
 import { testConn } from '../../utils/test/testConn';
 import { gCall } from '../../utils/test/gCall';
 import { redis } from '../../redis';
-import { User } from '../../entity/User';
+import { User } from '../../entities/User';
 
 let conn: Connection;
 

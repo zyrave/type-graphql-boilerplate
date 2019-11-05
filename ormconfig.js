@@ -17,7 +17,7 @@ const baseOptions = {
   password: process.env.DB_PASSWORD,
   synchronize: true,
   logging: true,
-  entities: [`${SOURCE_PATH}/entity/**{.ts,.js}`],
+  entities: [`${SOURCE_PATH}/entities/**{.ts,.js}`],
 };
 
 const defaultConfig = Object.assign(baseOptions, {
@@ -28,5 +28,4 @@ const oracleConfig = Object.assign(baseOptions, {
   sid: process.env.DB_NAME,
 });
 
-module.exports =
-  process.env.DB_TYPE === 'oracle' ? oracleConfig : defaultConfig;
+module.exports = process.env.DB_TYPE === 'oracle' ? oracleConfig : defaultConfig;

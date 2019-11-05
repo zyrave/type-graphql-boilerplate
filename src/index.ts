@@ -5,7 +5,8 @@ import http from 'http';
 import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
-import { createConnection } from 'typeorm';
+import { Container } from 'typedi';
+import { useContainer, createConnection } from 'typeorm';
 import session from 'express-session';
 import cors from 'cors';
 import compression from 'compression';
@@ -26,6 +27,8 @@ process.on('unhandledRejection', error => {
 
 dotenv.config();
 
+useContainer(Container);
+
 const startServer = async () => {
   const configurations = {
     // Note: You may need sudo to run on port 443
@@ -37,10 +40,7 @@ const startServer = async () => {
   const sslPath = `./ssl/${process.env.NODE_ENV}`;
 
   if (process.env.NODE_ENV === 'production') {
-    if (
-      fs.existsSync(`${sslPath}/server.key`) &&
-      fs.existsSync(`${sslPath}/server.crt`)
-    ) {
+    if (fs.existsSync(`${sslPath}/server.key`) && fs.existsSync(`${sslPath}/server.crt`)) {
       environment = process.env.NODE_ENV;
     } else {
       environment = 'development';
@@ -113,9 +113,7 @@ const startServer = async () => {
   server.listen({ port: config.port }, () =>
     console.log(
       '🚀 Server ready at',
-      `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${
-        apolloServer.graphqlPath
-      }`,
+      `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${apolloServer.graphqlPath}`,
     ),
   );
 };
