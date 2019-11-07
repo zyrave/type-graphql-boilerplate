@@ -2,7 +2,7 @@ import { Resolver, Mutation, Arg, Ctx } from 'type-graphql';
 import bcrypt from 'bcryptjs';
 
 import { User } from '../../entities/User';
-import { ChangePasswordInput } from './changePassword/ChangePasswordInput';
+import { ChangePasswordInput } from './types/ChangePasswordInput';
 import { redis } from './../../redis';
 import { forgotPasswordPrefix } from '../constants/redisPrefixes';
 import { Context } from '../../types/Context';
