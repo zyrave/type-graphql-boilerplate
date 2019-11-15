@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import fs from 'fs';
 import https from 'https';
 import http from 'http';
+import Path from 'path';
 import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
@@ -61,6 +62,8 @@ const startServer = async () => {
   const app = express();
 
   const RedisStore = connectRedis(session);
+
+  app.use('/images', express.static(Path.join(__dirname, '..', 'images')));
 
   app.use(
     cors({

@@ -11,10 +11,6 @@ import { createConfirmationUrl } from '../utils/createConfirmationUrl';
 export class RegisterResolver {
   @Query(() => String)
   @UseMiddleware(isAuthenticated)
-  async hello() {
-    return 'Hello World!';
-  }
-
   @Mutation(() => User)
   async register(@Arg('data')
   {
