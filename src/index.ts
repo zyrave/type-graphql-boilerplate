@@ -30,7 +30,7 @@ dotenv.config();
 
 useContainer(Container);
 
-const startServer = async () => {
+(async () => {
   const configurations = {
     // Note: You may need sudo to run on port 443
     production: { ssl: true, port: 443, hostname: '' },
@@ -49,15 +49,6 @@ const startServer = async () => {
   }
 
   const config = configurations[environment];
-
-  await createConnection();
-
-  const schema = await createSchema();
-
-  const apolloServer = new ApolloServer({
-    schema,
-    context: ({ req, res }: any) => ({ req, res }),
-  });
 
   const app = express();
 
@@ -91,6 +82,15 @@ const startServer = async () => {
     } as any),
   );
 
+  await createConnection();
+
+  const schema = await createSchema();
+
+  const apolloServer = new ApolloServer({
+    schema,
+    context: ({ req, res }: any) => ({ req, res }),
+  });
+
   apolloServer.applyMiddleware({ app, cors: false });
 
   // Create the HTTPS or HTTP server, per configuration
@@ -119,6 +119,4 @@ const startServer = async () => {
       `http${config.ssl ? 's' : ''}://${config.hostname}:${config.port}${apolloServer.graphqlPath}`,
     ),
   );
-};
-
-startServer();
+})();

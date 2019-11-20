@@ -5,8 +5,8 @@ import { isAuthenticated } from '../middleware/isAuthenticated';
 import { Product } from '../../entities/Product';
 import { ProductRepository } from '../../repositories/ProductRepository';
 import { Context } from '../../types/Context';
-import { CreateProductInput } from './types/CreateProductInput';
-import { UpdateProductInput } from './types/UpdateProductInput';
+import { ProductCreateInput } from './types/ProductCreateInput';
+import { ProductUpdateInput } from './types/ProductUpdateInput';
 
 @Resolver(Product)
 export class ProductResolver {
@@ -50,7 +50,7 @@ export class ProductResolver {
 
   @Mutation(() => Product)
   @UseMiddleware(isAuthenticated)
-  async createProduct(@Arg('data') input: CreateProductInput, @Ctx() ctx: Context): Promise<Product> {
+  async createProduct(@Arg('data') input: ProductCreateInput, @Ctx() ctx: Context): Promise<Product> {
     const product = this.productRepository.create({
       ...input,
       createdBy: ctx.req.session && ctx.req.session.userId,
@@ -65,7 +65,7 @@ export class ProductResolver {
 
   @Mutation(() => Product)
   @UseMiddleware(isAuthenticated)
-  async updateProduct(@Arg('data') input: UpdateProductInput): Promise<Product | null> {
+  async updateProduct(@Arg('data') input: ProductUpdateInput): Promise<Product | null> {
     let product;
 
     try {

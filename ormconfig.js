@@ -18,6 +18,13 @@ const baseOptions = {
   synchronize: true,
   logging: true,
   entities: [`${SOURCE_PATH}/entities/**{.ts,.js}`],
+  migrations: [`${SOURCE_PATH}/migrations/**{.ts,.js}`],
+  subscribers: [`${SOURCE_PATH}/subscribers/**{.ts,.js}`],
+  cli: {
+    entitiesDir: `${SOURCE_PATH}/entities`,
+    migrationsDir: `${SOURCE_PATH}/migrations`,
+    subscribersDir: `${SOURCE_PATH}/subscribers`,
+  },
 };
 
 const defaultConfig = Object.assign(baseOptions, {

@@ -4,10 +4,7 @@ import { Length } from 'class-validator';
 import { Product } from '../../../entities/Product';
 
 @InputType()
-export class UpdateProductInput implements Partial<Product> {
-  @Field()
-  id!: number;
-
+export class ProductCreateInput implements Partial<Product> {
   @Field()
   @Length(1, 200)
   name!: string;
@@ -23,7 +20,7 @@ export class UpdateProductInput implements Partial<Product> {
   quantity!: number;
 
   @Field({ nullable: true })
-  imagePath?: string;
+  imagePath!: string;
 
   @Field()
   isActive!: boolean;
