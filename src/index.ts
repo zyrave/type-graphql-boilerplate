@@ -54,7 +54,7 @@ useContainer(Container);
 
   const RedisStore = connectRedis(session);
 
-  app.use('/images', express.static(Path.join(__dirname, '..', 'images')));
+  app.use('/uploads', express.static(Path.join(__dirname, '..', 'uploads')));
 
   app.use(
     cors({

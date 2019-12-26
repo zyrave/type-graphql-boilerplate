@@ -2,6 +2,7 @@ import { Field, InputType } from 'type-graphql';
 import { Length } from 'class-validator';
 
 import { Product } from '../../../entities/Product';
+// import { File } from '../../../types/File';
 
 @InputType()
 export class ProductCreateInput implements Partial<Product> {
@@ -21,6 +22,9 @@ export class ProductCreateInput implements Partial<Product> {
 
   @Field({ nullable: true })
   imagePath!: string;
+
+  // @Field()
+  // image?: File;
 
   @Field()
   isActive!: boolean;
