@@ -1,12 +1,14 @@
-import { Resolver, Mutation, Arg } from 'type-graphql';
+import { Resolver, Mutation, UseMiddleware, Arg } from 'type-graphql';
 import { GraphQLUpload } from 'graphql-upload';
 import { createWriteStream } from 'fs';
 
+import { isAuthenticated } from '../middleware/isAuthenticated';
 import { Upload } from '../../types/Upload';
 
 @Resolver()
 export class UploadFileResolver {
   @Mutation(() => Boolean)
+  @UseMiddleware(isAuthenticated)
   async uploadFile(@Arg('file', () => GraphQLUpload)
   {
     createReadStream,
