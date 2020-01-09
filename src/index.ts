@@ -17,12 +17,12 @@ import { createSchema } from './utils/createSchema';
 import { redis } from './redis';
 
 process.on('uncaughtException', error => {
-  console.log(error);
+  console.error(error);
   process.exit(1);
 });
 
 process.on('unhandledRejection', error => {
-  console.log(error);
+  console.error(error);
   process.exit(1);
 });
 

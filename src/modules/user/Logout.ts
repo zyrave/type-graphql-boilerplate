@@ -10,7 +10,7 @@ export class LogoutResolver {
       if (ctx.req.session !== undefined)
         ctx.req.session.destroy(err => {
           if (err) {
-            console.log(err);
+            console.error(err);
             rej(false);
           }
 
