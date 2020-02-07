@@ -1,7 +1,7 @@
 {
-  "name": "type-graphql-boilerplate",
+  "name": "graphql-server-boilerplate",
   "version": "1.0.0",
-  "description": "TypeGraphQL Boilerplate",
+  "description": "GraphQL Server Boilerplate with TypeORM & TypeGraphQL",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "",
@@ -12,7 +12,7 @@
     "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpileOnly src/index.ts",
     "docker:start": "tsc && docker-compose -f docker-compose.yml up --build -d",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
-    "docker:build": "tsc && docker build --rm -t type-graphql-boilerplate-server .",
+    "docker:build": "tsc && docker build --rm -t graphql-server-boilerplate .",
     "docker:stop": "docker-compose down",
     "clean": "rm -rf dist node_modules",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",

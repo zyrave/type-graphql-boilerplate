@@ -1,4 +1,4 @@
-# TypeGraphQL Boilerplate
+# GraphQL Server Boilerplate with TypeORM & TypeGraphQL
 
 In the project directory, you can run:
 
