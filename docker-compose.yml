@@ -1,10 +1,10 @@
-version: '3.7'
+version: "3.7"
 services:
   database:
     image: postgres
     restart: always
     ports:
-      - '5432:5432'
+      - "5432:5432"
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -15,17 +15,17 @@ services:
     image: redis
     restart: always
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
       - ${DOCKER_DATA_PATH}/redis:/data
   server:
-    image: zyrave/type-graphql-boilerplate-server
+    image: zyrave/graphql-server-boilerplate
     build: .
     ports:
-      - '4000:4000'
+      - "4000:4000"
     env_file:
       - .env
     depends_on:
       - database
       - redis
-    command: ['./wait-for-it.sh', 'database:5432', '--', 'node', 'index.js']
+    command: ["./wait-for-it.sh", "database:5432", "--", "node", "index.js"]

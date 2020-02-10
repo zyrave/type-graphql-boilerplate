@@ -1,5 +1,5 @@
 # Base image
-FROM node:10-alpine
+FROM node:12-alpine
 
 # Install tools required for project
 RUN apk update
