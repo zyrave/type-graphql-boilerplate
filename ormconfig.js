@@ -1,7 +1,7 @@
 let host = 'localhost';
 let SOURCE_PATH = 'src';
 
-if (process.env.USE_DOCKER === 'true') {
+if (process.env.USE_DOCKER && process.env.USE_DOCKER.toLowerCase() === 'true') {
   host = process.env.DB_HOST || 'localhost';
   SOURCE_PATH = process.env.NODE_ENV === 'production' ? '.' : 'src';
 } else {

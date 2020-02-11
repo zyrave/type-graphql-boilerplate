@@ -22,11 +22,11 @@ RUN yarn
 # Copy dist files to the working directory
 COPY dist .
 
-# Expose ports
-EXPOSE 4000
-
 # Set Environment
 ENV NODE_ENV='production'
 
+# Expose ports
+EXPOSE 4000
+
 # Start app
-CMD ["node", "index.js"]
+CMD node index.js

@@ -9,21 +9,17 @@ RUN apk add --no-cache bash
 RUN mkdir -p /usr/src/app/server_dev
 WORKDIR /usr/src/app/server_dev
 
-# Copy all necessary files to the working directory
-COPY package*.json .
-COPY yarn.lock .
+# Copy all files to the working directory
+COPY . .
 
 # Install and cache app dependencies
 RUN yarn
 
-# Copy all files to the working directory
-COPY . .
+# Set Environment
+ENV NODE_ENV='development'
 
 # Expose ports
 EXPOSE 4000
 
-# Set Environment
-ENV NODE_ENV='development'
-
 # Start app
-CMD ["yarn", "dev"]
+CMD yarn dev
