@@ -20,7 +20,7 @@
     "test": "yarn dbtest:setup && jest"
   },
   "dependencies": {
-    "apollo-server-express": "^2.9.3",
+    "apollo-server-express": "^2.14.2",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.10.0",
     "compression": "^1.7.4",
